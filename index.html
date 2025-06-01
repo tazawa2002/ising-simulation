@@ -1,47 +1,58 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>2Dイジングモデルのシミュレーション</title>
+        <title>2D Ising Model Simulation</title>
+        <meta name="description" content="2次元イジングモデルのシミュレーションを行うWebアプリです。強磁性と反強磁性の挙動を可視化し、温度や格子サイズの変化による影響を観察できます。">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="イジングモデル, 2次元, シミュレーション, 強磁性, 反強磁性, 温度, 格子サイズ, 可視化">
+        <link rel="stylesheet" href="./style.css" type="text/css" />
         <script type="text/javascript" src="./ising.js" charset="utf-8"></script>
 
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGP7D7QND1"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LTLTQKC0D8"></script>
         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-          gtag('config', 'G-NGP7D7QND1');
+        gtag('config', 'G-LTLTQKC0D8');
         </script>
     </head>
     <body>
-      <h1>2Dイジングモデルのシミュレーション</h1>
-      <canvas id="ising"></canvas>
-      <br>
-      <!-- <form name="Cell" >
-          <input type="radio" name="color" value="black" id="v1" checked="checked"/>
-          <label for="v1">黒</label>
-          <input type="radio" name="color" value="white" id="v2" />
-          <label for="v2">白</label><br>			
-      </form> -->
-      <form>
-          <input type="radio" name="J" value=1 id="ferro"checked="checked"/>
-          <label for="ferro">強磁性</label>
-          <input type="radio" name="J" value=-1 id="antiferro"/>
-          <label for="antiferro">反強磁性</label><br>			
-      </form>
-      kt:<span id="kt_value"></span><br>
-      <input type="range" name="kt" value=1.0 min=0.01 max=10 step=0.01 id="kt"><br>
-      L:<span id="N_value"></span><br>
-      <input type="range" name="sqrt(N)" value=500 min=1 max=200 step=1 id="N"><br>
-      初期配置:<input type="button" name="random" value="ランダム配値" onclick="spin_random();">
-      <input type="button" name="white" value="白配値" onclick="spin_white();">
-      <input type="button" name="black" value="黒配値" onclick="spin_black();">
-      <input type="button" name="kougo" value="交互に配値" onclick="spin_kougo();"><br>
-      シミュレーション:<input type="button" name="main" value="スタート" onclick="main();">
-      <input type="button" name="stop" value="ストップ" onclick="stop();">
-      <!-- <input type="button" name="printBoard" value="printBoard" onclick="printBoard();">
-      <input type="button" name="clear" value="クリア" onclick="remove();"> -->
+      <header>
+        <h1>2D Ising Model Simulation</h1>
+      </header>
+
+      <main>
+        <canvas id="ising"></canvas>
+        <br>
+        <!-- <form name="Cell" >
+            <input type="radio" name="color" value="black" id="v1" checked="checked"/>
+            <label for="v1">黒</label>
+            <input type="radio" name="color" value="white" id="v2" />
+            <label for="v2">白</label><br>			
+        </form> -->
+        <div id="config">
+          <div class="mainbutton">
+            <input type="button" name="main" value="スタート" onclick="main();">
+            <input type="button" name="stop" value="ストップ" onclick="stop();">
+          </div>
+          <form>
+              <input type="radio" name="J" value=1 id="ferro"checked="checked"/><label for="ferro">強磁性</label>
+              <input type="radio" name="J" value=-1 id="antiferro"/><label for="antiferro">反強磁性</label>
+          </form>
+          kt:<span id="kt_value">10.0</span>
+          <input type="range" name="kt" value=10 min=0.01 max=10 step=0.01 id="kt"><br>
+          L:<span id="N_value">200</span>
+          <input type="range" name="sqrt(N)" value=200 min=1 max=200 step=1 id="N"><br>
+          <input type="button" name="random" value="ランダム配値" onclick="spin_random();">
+          <input type="button" name="white" value="白配値" onclick="spin_white();">
+          <input type="button" name="black" value="黒配値" onclick="spin_black();">
+          <input type="button" name="kougo" value="交互に配値" onclick="spin_kougo();">
+          <!-- <input type="button" name="printBoard" value="printBoard" onclick="printBoard();">
+          <input type="button" name="clear" value="クリア" onclick="remove();"> -->
+        </div>
+    </main>
       <!-- <h2>簡単な説明</h2>
       <p>
         イジングモデルは磁石のモデルである. 
